@@ -1,0 +1,29 @@
+-   hosts:          all
+    gather_facts:   false
+    
+    vars:
+        NOMBRE:                     felipe
+        ruta:                       /datos/
+    
+    tasks:
+        -   name:                   Asegurar que tenemos la configuración deseada
+            block:
+                -   name:           Asegurarnos que tenemos un directorio para la configuración
+                    file:
+                        state:      directory
+                        path:       "{{ ruta }}{{ NOMBRE }}"
+                        
+                -   name:           Asegurarnos que tenemos la configuración adecuada
+                    template:
+                        src:        ./propiedades.jinja2
+                        dest:       "{{ ruta }}{{ NOMBRE }}/propiedades.txt"
+                        mode:       '0644'
+            tags:
+                -                   CONFIGURACION
+        
+        -   name:                   Comprobar configuración
+            shell:
+                cmd:                "cat {{ ruta }}{{ NOMBRE }}/propiedades.txt | grep {{nombre}}"
+            changed_when:           false
+            tags:
+                -                   PRUEBAS
