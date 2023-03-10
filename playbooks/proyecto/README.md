@@ -3,9 +3,10 @@ Queremos un playbook, con tags
 Y llevarlo a TOWER en una orquestación:
 - Proyecto - Reutilziar
 - Inventario
-- Playbook
-    - Survey <- Formulario (pediremos la variable VUESTRO NOMBRE)
+- Credencial
+- Playbook (si solicito tags) con 1 playbook me vale
 - Orquestación
+    - Survey <- Formulario (pediremos la variable VUESTRO NOMBRE)
 
 Playbook
 variable:

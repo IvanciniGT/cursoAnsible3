@@ -1,6 +1,6 @@
 -   hosts:          all
     gather_facts:   false
-    
+    become:         true
     vars:
         NOMBRE:                     felipe
         ruta:                       /datos/
@@ -23,7 +23,7 @@
         
         -   name:                   Comprobar configuración
             shell:
-                cmd:                "cat {{ ruta }}{{ NOMBRE }}/propiedades.txt | grep {{nombre}}"
+                cmd:                "cat {{ ruta }}{{ NOMBRE }}/propiedades.txt | grep {{NOMBRE}}"
             changed_when:           false
             tags:
                 -                   PRUEBAS
